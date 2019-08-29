@@ -7,10 +7,11 @@ def train_test_split(X, y, test_ratio=0.2, seed=None):
     assert 0.0 <= test_ratio <= 1.0, \
         "test_train must be valid"
 
-    if seed:
+    if seed:    # 是否使用随机种子，使随机结果相同，方便debug
         np.random.seed(seed)
-
+    # permutation(n) 可直接生成一个随机排列的数组，含有n个元素
     shuffle_index = np.random.permutation(len(X))
+
     test_size = int(len(X) * test_ratio)
     test_index = shuffle_index[:test_size]
     train_index = shuffle_index[test_size:]

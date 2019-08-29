@@ -12,13 +12,10 @@ class SimpleLinearRegression:
             "简单线性回归模型仅能够处理一维特征向量"
         assert len(x_train) == len(y_train), \
             "特征向量的长度和标签的长度相同"
-
         x_mean = np.mean(x_train)
         y_mean = np.mean(y_train)
-
         num = (x_train - x_mean).dot(y_train - y_mean)  # 分子
         d = (x_train - x_mean).dot(x_train - x_mean)    # 分母
-
         self.a_ = num / d
         self.b_ = y_mean - self.a_ * x_mean
 
